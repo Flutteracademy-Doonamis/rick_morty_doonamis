@@ -10,4 +10,6 @@ class AppSpaces {
     double distance = (MediaQuery.of(context).size.width);
     return distance;
   }
+
+  static double spaceTexts = 20;
 }

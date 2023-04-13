@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:rick_morty_doonamis/theme/app_colors.dart';
 import 'package:rick_morty_doonamis/theme/app_images.dart';

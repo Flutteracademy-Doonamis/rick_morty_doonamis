@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rick_morty_doonamis/modules/start/app/ui/pages/home_page.dart';
+import 'package:rick_morty_doonamis/core/router/app_router.dart';
+import 'package:rick_morty_doonamis/theme/app_theme.dart';
 
 void main() => runApp(const MyApp());
 
@@ -8,9 +9,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Material App',
-      home: HomePage(),
+
+      /// THEME
+      theme: appTheme,
+
+      /// ROUTES
+      routerConfig: goRouter,
     );
   }
 }
