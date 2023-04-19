@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:rick_morty_doonamis/core/locator/locator.dart';
 import 'package:rick_morty_doonamis/core/router/app_router.dart';
+import 'package:rick_morty_doonamis/modules/characters/app/structure/character/character_cubit.dart';
+import 'package:rick_morty_doonamis/modules/characters/app/structure/character/character_state.dart';
+import 'package:rick_morty_doonamis/modules/characters/data/services/character_api_services.dart';
 import 'package:rick_morty_doonamis/theme/app_fonts.dart';
 import 'package:rick_morty_doonamis/theme/app_spaces.dart';
 import 'package:rick_morty_doonamis/widgets/buttons/button_widget.dart';
@@ -12,6 +17,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          CharacterApiServices().getCharactersPerPage(2);
+        },
+      ),
       body: Stack(
         children: [
           const BackgroundImage(),
