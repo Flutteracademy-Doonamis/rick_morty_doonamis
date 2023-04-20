@@ -20,6 +20,7 @@ class CharacterDTO {
   List<String>? episode;
   String? url;
   String? created;
+  bool? isFavourite;
   CharacterDTO({
     this.id,
     this.name,
@@ -33,6 +34,7 @@ class CharacterDTO {
     this.episode,
     this.url,
     this.created,
+    this.isFavourite,
   });
 
   factory CharacterDTO.fromJson(Map<String, dynamic> json) =>

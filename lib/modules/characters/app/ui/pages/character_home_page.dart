@@ -4,6 +4,7 @@ import 'package:rick_morty_doonamis/core/locator/locator.dart';
 import 'package:rick_morty_doonamis/modules/characters/app/structure/character/character_cubit.dart';
 import 'package:rick_morty_doonamis/modules/characters/app/structure/character/character_state.dart';
 import 'package:rick_morty_doonamis/modules/characters/app/ui/widgets/button_search_widget.dart';
+import 'package:rick_morty_doonamis/modules/characters/app/ui/widgets/cards/card_character.dart';
 import 'package:rick_morty_doonamis/modules/characters/app/ui/widgets/popupmenu_button_widget.dart';
 import 'package:rick_morty_doonamis/theme/app_colors.dart';
 import 'package:rick_morty_doonamis/widgets/layout/background_image.dart';
@@ -60,9 +61,8 @@ class CharacterHomePage extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return Column(
                             children: [
-                              Container(
-                                height: 40,
-                                color: Colors.red,
+                              CardCharacter(
+                                character: state.character[index],
                               ),
                               SizedBox(
                                 height: 20,

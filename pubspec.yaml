@@ -54,6 +54,11 @@ dependencies:
   freezed: ^2.3.2
   get_it: ^7.2.0
 
+  ###
+  ### SAVE IN LOCAL
+  ###
+  shared_preferences: ^2.1.0
+
 dev_dependencies:
   build_runner: ^2.3.3
   json_serializable: ^6.6.1

@@ -24,6 +24,7 @@ CharacterDTO _$CharacterDTOFromJson(Map<String, dynamic> json) => CharacterDTO(
           (json['episode'] as List<dynamic>?)?.map((e) => e as String).toList(),
       url: json['url'] as String?,
       created: json['created'] as String?,
+      isFavourite: json['isFavourite'] as bool?,
     );
 
 Map<String, dynamic> _$CharacterDTOToJson(CharacterDTO instance) =>
@@ -40,4 +41,5 @@ Map<String, dynamic> _$CharacterDTOToJson(CharacterDTO instance) =>
       'episode': instance.episode,
       'url': instance.url,
       'created': instance.created,
+      'isFavourite': instance.isFavourite,
     };
