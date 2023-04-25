@@ -18,6 +18,12 @@ class CharacterHomePage extends StatelessWidget {
         bloc: locator<CharacterCubit>(),
         builder: (context, state) {
           return Scaffold(
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerFloat,
+            floatingActionButton: FloatingActionButton(
+              heroTag: "Hero1",
+              onPressed: () {},
+            ),
             body: Stack(
               children: [
                 BackgroundImage(),

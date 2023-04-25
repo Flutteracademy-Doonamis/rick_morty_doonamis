@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CharacterState {
   List<CharacterDTO> get character => throw _privateConstructorUsedError;
+  List<CharacterDTO> get favCharacters => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CharacterStateCopyWith<CharacterState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $CharacterStateCopyWith<$Res> {
           CharacterState value, $Res Function(CharacterState) then) =
       _$CharacterStateCopyWithImpl<$Res, CharacterState>;
   @useResult
-  $Res call({List<CharacterDTO> character});
+  $Res call({List<CharacterDTO> character, List<CharacterDTO> favCharacters});
 }
 
 /// @nodoc
@@ -46,11 +47,16 @@ class _$CharacterStateCopyWithImpl<$Res, $Val extends CharacterState>
   @override
   $Res call({
     Object? character = null,
+    Object? favCharacters = null,
   }) {
     return _then(_value.copyWith(
       character: null == character
           ? _value.character
           : character // ignore: cast_nullable_to_non_nullable
+              as List<CharacterDTO>,
+      favCharacters: null == favCharacters
+          ? _value.favCharacters
+          : favCharacters // ignore: cast_nullable_to_non_nullable
               as List<CharacterDTO>,
     ) as $Val);
   }
@@ -64,7 +70,7 @@ abstract class _$$_CharacterStateCopyWith<$Res>
       __$$_CharacterStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<CharacterDTO> character});
+  $Res call({List<CharacterDTO> character, List<CharacterDTO> favCharacters});
 }
 
 /// @nodoc
@@ -79,11 +85,16 @@ class __$$_CharacterStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? character = null,
+    Object? favCharacters = null,
   }) {
     return _then(_$_CharacterState(
       character: null == character
           ? _value._character
           : character // ignore: cast_nullable_to_non_nullable
+              as List<CharacterDTO>,
+      favCharacters: null == favCharacters
+          ? _value._favCharacters
+          : favCharacters // ignore: cast_nullable_to_non_nullable
               as List<CharacterDTO>,
     ));
   }
@@ -92,8 +103,11 @@ class __$$_CharacterStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_CharacterState implements _CharacterState {
-  const _$_CharacterState({final List<CharacterDTO> character = const []})
-      : _character = character;
+  const _$_CharacterState(
+      {final List<CharacterDTO> character = const [],
+      final List<CharacterDTO> favCharacters = const []})
+      : _character = character,
+        _favCharacters = favCharacters;
 
   final List<CharacterDTO> _character;
   @override
@@ -104,9 +118,18 @@ class _$_CharacterState implements _CharacterState {
     return EqualUnmodifiableListView(_character);
   }
 
+  final List<CharacterDTO> _favCharacters;
+  @override
+  @JsonKey()
+  List<CharacterDTO> get favCharacters {
+    if (_favCharacters is EqualUnmodifiableListView) return _favCharacters;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_favCharacters);
+  }
+
   @override
   String toString() {
-    return 'CharacterState(character: $character)';
+    return 'CharacterState(character: $character, favCharacters: $favCharacters)';
   }
 
   @override
@@ -115,12 +138,16 @@ class _$_CharacterState implements _CharacterState {
         (other.runtimeType == runtimeType &&
             other is _$_CharacterState &&
             const DeepCollectionEquality()
-                .equals(other._character, _character));
+                .equals(other._character, _character) &&
+            const DeepCollectionEquality()
+                .equals(other._favCharacters, _favCharacters));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_character));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_character),
+      const DeepCollectionEquality().hash(_favCharacters));
 
   @JsonKey(ignore: true)
   @override
@@ -130,11 +157,14 @@ class _$_CharacterState implements _CharacterState {
 }
 
 abstract class _CharacterState implements CharacterState {
-  const factory _CharacterState({final List<CharacterDTO> character}) =
-      _$_CharacterState;
+  const factory _CharacterState(
+      {final List<CharacterDTO> character,
+      final List<CharacterDTO> favCharacters}) = _$_CharacterState;
 
   @override
   List<CharacterDTO> get character;
+  @override
+  List<CharacterDTO> get favCharacters;
   @override
   @JsonKey(ignore: true)
   _$$_CharacterStateCopyWith<_$_CharacterState> get copyWith =>

@@ -14,10 +14,25 @@ class CharacterCubit extends Cubit<CharacterState> {
   }
 
   Future<void> _init() async {
-    List<CharacterDTO> characters =
+    List<CharacterDTO> initCharacters =
         await characterRepository.fetchListCharacter(1);
+    emit(state.copyWith(
+      character: initCharacters,
+    ));
 
-    emit(state.copyWith(character: characters));
+    await getLocalFavs();
+
+    // List<CharacterDTO> characters = [];
+
+    // initCharacters.map((CharacterDTO element) {
+    //   state.favCharacters.map((favElement) {
+    //     if (favElement.id == element.id) {
+    //       characters.add(favElement);
+    //     } else {
+    //       characters.add(element);
+    //     }
+    //   });
+    // });
   }
 
   Future<void> toggleCharacters(int idElement) async {
@@ -44,6 +59,21 @@ class CharacterCubit extends Cubit<CharacterState> {
     }).toList();
 
     emit(state.copyWith(character: newCharacters));
+    setLocalFavs();
+  }
+
+  Future<void> setLocalFavs() async {
+    // ENVIAR DATOS DE DB LOCAL
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString(
+          "favouritesCharacters", jsonEncode(state.character));
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> getLocalFavs() async {
     // CONSEGUIR DATOS DE DB LOCAL
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -54,14 +84,13 @@ class CharacterCubit extends Cubit<CharacterState> {
 
       final List<CharacterDTO> _listResponse =
           _mapResponse.map((e) => CharacterDTO.fromJson(e)).toList();
-      emit(state.copyWith(character: _listResponse));
-    } catch (e) {}
-
-    // ENVIAR DATOS DE DB LOCAL
-    try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setString(
-          "favouritesCharacters", jsonEncode(state.character));
-    } catch (e) {}
+      print(_listResponse);
+      emit(state.copyWith(
+        character: _listResponse,
+        favCharacters: _listResponse,
+      ));
+    } catch (e) {
+      print(e);
+    }
   }
 }

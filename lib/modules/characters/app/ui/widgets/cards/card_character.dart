@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:rick_morty_doonamis/core/router/app_router.dart';
+import 'package:rick_morty_doonamis/modules/characters/app/ui/pages/character_details_page.dart';
 import 'package:rick_morty_doonamis/modules/characters/app/ui/widgets/buttons/favourite_button_widget.dart';
 import 'package:rick_morty_doonamis/modules/characters/data/models/character_dto.dart';
 
@@ -12,7 +15,12 @@ class CardCharacter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        context.pushNamed(AppRoutes.characterDetail.name,
+            extra: CharacterDetailsPageObject(
+              character: character,
+            ));
+      },
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: Row(

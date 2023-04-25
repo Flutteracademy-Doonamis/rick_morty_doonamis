@@ -46,6 +46,7 @@ dependencies:
   ### ROUTER
   ###
   go_router: ^6.5.6
+  share_plus: ^6.3.2
 
   ###
   ### STRUCTURE
