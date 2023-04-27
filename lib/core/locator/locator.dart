@@ -12,11 +12,16 @@ void setupLocator() async {
 registerCubits() async {
   if (!locator.isRegistered<CharacterCubit>()) {
     locator.registerLazySingleton(
-      () => CharacterCubit(
-        characterRepository: CharacterRepository(
-          rickandmortyApiServicesCharacters: CharacterApiServices(),
-        ),
-      ),
-    );
+        () => CharacterCubit(
+              characterRepository: CharacterRepository(
+                rickandmortyApiServicesCharacters: CharacterApiServices(),
+              ),
+            ), dispose: (characterCubit) {
+      characterCubit.close();
+    });
   }
+}
+
+unRegisterCubits() {
+  locator.unregister<CharacterCubit>();
 }

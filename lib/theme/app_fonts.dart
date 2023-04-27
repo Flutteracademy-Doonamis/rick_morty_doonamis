@@ -10,6 +10,11 @@ TextTheme TEXT_THEME_WHITE = TextTheme(
     fontWeight: FontWeight.w500,
     fontSize: 25,
   ),
+  displayMedium: GoogleFonts.montserrat(
+    color: AppColors.COLOR_TEXT_GREY1,
+    fontWeight: FontWeight.w500,
+    fontSize: 18,
+  ),
   bodyLarge: GoogleFonts.montserrat(
     color: AppColors.COLOR_WHITE,
     fontWeight: FontWeight.w400,
